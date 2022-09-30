@@ -1,0 +1,9 @@
+.Container {
+  width: 50%;
+  text-align: center;
+  margin: 15% auto;
+}
+
+.score_header {
+  margin: 2% auto;
+}

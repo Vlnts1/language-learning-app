@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Header } from "./views/components/Header/Header";
+import { FinalScreen } from "./views/FinalScreen/FinalScreen";
+import { Home } from "./views/HomePage/HomePage";
+import { VocabularyQuiez } from "./views/VocabularyQuiezPage/VocabularyQuiez";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/test" element={<VocabularyQuiez />} />
+        <Route path="/score" element={<FinalScreen />} />
+      </Routes>
+    </Router>
   );
 }
 
