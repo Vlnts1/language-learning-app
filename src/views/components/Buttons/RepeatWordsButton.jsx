@@ -1,32 +1,19 @@
-import React, { useState } from "react";
-import { Button, Modal } from "react-bootstrap";
-import { TextField } from "../NumOfWordsComp/TextField";
+import React from 'react';
+import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 export const RepeatWordsButton = () => {
-  const [show, setShow] = useState(false);
+  const navigate = useNavigate();
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate('/test');
+  };
   return (
     <>
-      <Button variant="primary" className="m-3" onClick={handleShow}>
+      <Button variant="primary" className="m-3" type="submit" onClick={handleSubmit}>
         Повторити слова
       </Button>
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header>
-          <Modal.Title>Обрати кількість слів</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <TextField />
-          <Modal.Footer>
-            <div class="col-md-12 text-center">
-              <Button variant="primary" type="submit">
-                Get Started
-              </Button>
-            </div>
-          </Modal.Footer>
-        </Modal.Body>
-      </Modal>
     </>
   );
 };

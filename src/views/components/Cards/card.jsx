@@ -1,13 +1,13 @@
-import React from "react";
-import { Card } from "react-bootstrap";
-import "./card.css";
+import React from 'react';
+import { Card } from 'react-bootstrap';
+import './card.css';
 
-const WordCard = () => {
+const WordCard = ({ word, i }) => {
   return (
     <Card className="card">
-      <Card.Body>
-        <Card.Title>Слово</Card.Title>
-        <Card.Text>Переклад</Card.Text>
+      <Card.Body key={i}>
+        <Card.Title>{word.questionText}</Card.Title>
+        <Card.Text>{word.questionTranslate}</Card.Text>
       </Card.Body>
     </Card>
   );

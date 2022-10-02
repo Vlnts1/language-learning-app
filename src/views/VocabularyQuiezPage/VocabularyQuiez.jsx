@@ -1,22 +1,49 @@
-import React from "react";
-import "./VocabularyQuiez.css";
-import { Button, Card } from "react-bootstrap";
+import React, { useState } from 'react';
+import './VocabularyQuiez.css';
+import { Button, Card } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { handleScoreChange } from '../../store/actions';
 
 export const VocabularyQuiez = () => {
+  const { dictionary, score } = useSelector((state) => state);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [questionIndex, setQuestionIndex] = useState(0);
+
+  const handleClick = (correctAnswer) => {
+    if (questionIndex < 9) {
+      if (correctAnswer) {
+        dispatch(handleScoreChange(10));
+      }
+
+      setQuestionIndex((prevIndex) => prevIndex + 1);
+    } else {
+      if (correctAnswer) {
+        dispatch(handleScoreChange(10));
+      }
+      navigate('/score');
+    }
+  };
+
   return (
     <>
       <Card className="mt-5">
         <Card.Body>
-          <div class="col-md-12 mt-2 text-center">
-            <h2 className="main-header">Words 1</h2>
-            <h3 className="word">Word</h3>
-            <div className="d-flex flex-column">
-              <Button className="button">Answer 1</Button>
-              <Button className="button">Answer 2</Button>
-              <Button className="button">Answer 3</Button>
-              <Button className="button">Answer 4</Button>
-            </div>
-            <h6 className="score">Результат: 2/10</h6>
+          <div className="col-md-12 mt-2 text-center">
+            <h3 className="word">{dictionary[questionIndex].questionText}</h3>
+            {dictionary[questionIndex].answers.map((answer, i) => (
+              <div className="d-flex flex-column">
+                <Button className="button" onClick={() => handleClick(answer.correctAnswer)}>
+                  {answer.answerText}
+                </Button>
+              </div>
+            ))}
+            <h6 className="main-header">
+              Word <span>{questionIndex + 1}</span>
+            </h6>
+            <h6 className="score">Результат:{score}%</h6>
           </div>
         </Card.Body>
       </Card>
