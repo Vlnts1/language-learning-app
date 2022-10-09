@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
-import { handleAddNewWordChange } from '../../../store/actions';
+import { handleAddNewWordChange } from '../../store/actions';
 
-export const AddNewWordButton = () => {
+export const AddNewForm = () => {
   const { dictionary } = useSelector((state) => state);
   console.log(dictionary);
   const dispatch = useDispatch();
@@ -23,13 +23,9 @@ export const AddNewWordButton = () => {
     setTranslation(e.target.value);
   };
 
-  const handleAddNewWordSubmit = () => {
-    dispatch(
-      handleAddNewWordChange({
-        questionText: word,
-        questionTranslate: translation
-      })
-    );
+  const handleAddNewWordSubmit = (e) => {
+    e.preventDefault();
+    dispatch(handleAddNewWordChange({ questionText: word, questionTranslate: translation }));
 
     setWord('');
     setTranslation('');
@@ -64,7 +60,7 @@ export const AddNewWordButton = () => {
                 onChange={(e) => handleTranslationChange(e)}
               />
             </Form.Group>
-            <div class="col-md-12 mt-2 text-center">
+            <div className="col-md-12 mt-2 text-center">
               <Button variant="primary" type="submit" onClick={handleAddNewWordSubmit}>
                 Додати слово
               </Button>

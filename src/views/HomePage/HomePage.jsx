@@ -1,13 +1,13 @@
 import React from 'react';
-import { AddNewWordButton } from '../components/Buttons/AddWordButton';
-import { RepeatWordsButton } from '../components/Buttons/RepeatWordsButton';
-import { CardList } from '../components/Cards/cardList';
+import { AddNewForm } from '../../components/Buttons/AddNewForm';
+import { CardList } from '../../components/Cards/cardList';
+import { RepeatWordsButton } from '../../components/Buttons/RepeatWordsButton';
 
 export const Home = () => {
   return (
     <>
       <div className="col-md-12 mt-2 text-center">
-        <AddNewWordButton />
+        <AddNewForm />
         <RepeatWordsButton />
       </div>
       <>

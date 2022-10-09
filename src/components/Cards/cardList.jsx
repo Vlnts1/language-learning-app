@@ -1,5 +1,4 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
 import './card.css';
 import { useSelector } from 'react-redux';
 import './card.css';
@@ -9,8 +8,8 @@ export const CardList = () => {
 
   return (
     <>
-      {dictionary.map((word, i) => (
-        <WordCard word={word} index={i} />
+      {dictionary.map((word, item) => (
+        <WordCard key={item} word={word} />
       ))}
     </>
   );

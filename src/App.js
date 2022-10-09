@@ -1,8 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Header } from "./views/components/Header/Header";
-import { FinalScreen } from "./views/FinalScreen/FinalScreen";
-import { Home } from "./views/HomePage/HomePage";
-import { VocabularyQuiez } from "./views/VocabularyQuiezPage/VocabularyQuiez";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Header } from './components/Header/Header';
+import { FinalScreen } from './views/FinalScreen/FinalScreen';
+import { Home } from './views/HomePage/HomePage';
+import { VocabularyQuiez } from './views/VocabularyQuiezPage/VocabularyQuiez';
 
 function App() {
   return (
